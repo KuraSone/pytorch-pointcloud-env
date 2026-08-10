@@ -9,6 +9,7 @@ for cmd in (['nvcc', '--version'], ['nvidia-smi']):
         print(f'{cmd[0]} not found')
 
 print(f'sys version: {sys.version}')
+print()
 
 try:
     import torch
@@ -17,6 +18,7 @@ try:
     print(f'torch.cuda.get_device_capability(): {torch.cuda.get_device_capability() if cuda_is_available else "N/A"}')
 except Exception:
     print("torch not found")
+print()
 
 packages = [
     'torch', 'torchcodec', 'torchvision', 'torchaudio', 'transformers',
@@ -24,16 +26,22 @@ packages = [
     'triton_python_backend_utils',
 ]
 dist_names = metadata.packages_distributions()
-for name in packages:
+found, missing = [], []
+for name in sorted(packages):
     if util.find_spec(name) is None:
-        print(f'{name} not found')
+        missing.append(f'{name} not found')
         continue
     try:
         dist = dist_names.get(name, [name])[0]
-        print(f'{dist}=={metadata.version(dist)}')
+        found.append(f'{dist}=={metadata.version(dist)}')
     except metadata.PackageNotFoundError:
-        print(f'{name} version: unknown')
-
+        found.append(f'{name} version: unknown')
+for line in found:
+    print(line)
 print()
+for line in missing:
+    print(line)
+print()
+
 for dist in sorted(metadata.distributions(), key=lambda d: d.metadata['Name'].lower()):
     print(f"{dist.metadata['Name']}=={dist.version}")

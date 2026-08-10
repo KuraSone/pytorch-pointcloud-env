@@ -173,7 +173,6 @@ lib64/
 parts/
 sdist/
 var/
-wheels/
 share/python-wheels/
 *.egg-info/
 .installed.cfg
@@ -767,5 +766,4 @@ FodyWeavers.xsd
 # End of https://www.toptal.com/developers/gitignore/api/python,macos,windows,linux,jetbrains+all,visualstudiocode,jupyternotebooks,visualstudio,virtualenv
 
 /uv.lock
-!/wheels/index.html
 /.idea/

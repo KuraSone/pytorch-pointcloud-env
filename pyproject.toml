@@ -29,11 +29,10 @@ cu102 = [
 ]
 cu102-linux = [
     "numpy<2",
-    "pyg-lib",
+    "pyg-lib; sys_platform == 'linux'",
     "setuptools<81",
-    "torch==1.12.1+cu102",
+    "torch==1.12.1+cu102; sys_platform == 'linux'",
     "torch-geometric==2.5.*",
-    "packaging>=999; sys_platform != 'linux'",  # 非法版本，以防止非linux平台安装本组
 ]
 cu118 = [
     "flash-attn==2.8.3+pt2.7.0cu118",

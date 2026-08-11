@@ -2,6 +2,7 @@
 name = "pytorch-pointcloud-env"
 version = "0.1.0"
 requires-python = ">=3.9"
+readme = "README.md"
 dependencies = [
     "h5py",
     "scikit-learn",
@@ -9,10 +10,6 @@ dependencies = [
 ]
 
 [dependency-groups]
-dev = [
-    "mypy",
-    "pip",
-]
 cpu = [
     "kaolin",
     "pyg-lib",
@@ -61,12 +58,16 @@ cu128 = [
     "torch-geometric==2.7.*",
     "triton-windows==3.4.*; sys_platform == 'win32'",
 ]
+dev = [
+    "mypy",
+]
 
 #[build-system]
 #requires = ["hatchling"]
 #build-backend = "hatchling.build"
 
 [tool.uv]
+package = false
 environments = [
     "sys_platform == 'linux'",
     "sys_platform == 'win32'",
@@ -114,6 +115,30 @@ torch = [
 ]
 
 [[tool.uv.index]]
+name = "kaolin-cpu"
+url = "https://nvidia-kaolin.s3.us-east-2.amazonaws.com/torch-2.8.0_cpu.html"
+explicit = true
+format = "flat"
+
+[[tool.uv.index]]
+name = "kaolin-cu118"
+url = "https://nvidia-kaolin.s3.us-east-2.amazonaws.com/torch-2.7.1_cu118.html"
+explicit = true
+format = "flat"
+
+[[tool.uv.index]]
+name = "kaolin-cu126"
+url = "https://nvidia-kaolin.s3.us-east-2.amazonaws.com/torch-2.8.0_cu126.html"
+explicit = true
+format = "flat"
+
+[[tool.uv.index]]
+name = "kaolin-cu128"
+url = "https://nvidia-kaolin.s3.us-east-2.amazonaws.com/torch-2.8.0_cu128.html"
+explicit = true
+format = "flat"
+
+[[tool.uv.index]]
 name = "local"
 url = "./wheels"
 format = "flat"
@@ -121,31 +146,6 @@ format = "flat"
 [[tool.uv.index]]
 name = "miropsota"
 url = "https://miropsota.github.io/torch_packages_builder"
-
-[[tool.uv.index]]
-name = "pytorch-cpu"
-url = "https://download.pytorch.org/whl/cpu"
-explicit = true
-
-[[tool.uv.index]]
-name = "pytorch-cu102"
-url = "https://download.pytorch.org/whl/cu102"
-explicit = true
-
-[[tool.uv.index]]
-name = "pytorch-cu118"
-url = "https://download.pytorch.org/whl/cu118"
-explicit = true
-
-[[tool.uv.index]]
-name = "pytorch-cu126"
-url = "https://download.pytorch.org/whl/cu126"
-explicit = true
-
-[[tool.uv.index]]
-name = "pytorch-cu128"
-url = "https://download.pytorch.org/whl/cu128"
-explicit = true
 
 [[tool.uv.index]]
 name = "pyg-cpu"
@@ -184,28 +184,29 @@ explicit = true
 format = "flat"
 
 [[tool.uv.index]]
-name = "kaolin-cpu"
-url = "https://nvidia-kaolin.s3.us-east-2.amazonaws.com/torch-2.8.0_cpu.html"
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
 explicit = true
-format = "flat"
 
 [[tool.uv.index]]
-name = "kaolin-cu118"
-url = "https://nvidia-kaolin.s3.us-east-2.amazonaws.com/torch-2.7.1_cu118.html"
+name = "pytorch-cu102"
+url = "https://download.pytorch.org/whl/cu102"
 explicit = true
-format = "flat"
 
 [[tool.uv.index]]
-name = "kaolin-cu126"
-url = "https://nvidia-kaolin.s3.us-east-2.amazonaws.com/torch-2.8.0_cu126.html"
+name = "pytorch-cu118"
+url = "https://download.pytorch.org/whl/cu118"
 explicit = true
-format = "flat"
 
 [[tool.uv.index]]
-name = "kaolin-cu128"
-url = "https://nvidia-kaolin.s3.us-east-2.amazonaws.com/torch-2.8.0_cu128.html"
+name = "pytorch-cu126"
+url = "https://download.pytorch.org/whl/cu126"
 explicit = true
-format = "flat"
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true
 
 [tool.ruff]
 target-version = "py39"
@@ -216,10 +217,10 @@ exclude = [".venv"]
 
 [[tool.mypy.overrides]]
 module = [
-    "h5py",
     "flash_attn",
-    "tqdm",
+    "h5py",
     "sklearn",
     "sklearn.*",
+    "tqdm",
 ]
 ignore_missing_imports = true

@@ -26,17 +26,21 @@ else:
 print()
 
 packages: list[str] = [
-    "torch",
-    "torchcodec",
-    "torchvision",
-    "torchaudio",
-    "transformers",
     "flash_attn",
-    "vllm",
+    "kaolin",
+    "pyg_lib",
+    "pytorch3d",
     "tensorrt",
     "tensorrt_llm",
+    "torch",
+    "torch_geometric",
+    "torchaudio",
+    "torchcodec",
+    "torchvision",
     "triton",
     "triton_python_backend_utils",
+    "transformers",
+    "vllm",
 ]
 if hasattr(metadata, "packages_distributions"):
     dist_names: Mapping[str, list[str]] = metadata.packages_distributions()
@@ -46,7 +50,7 @@ else:
         _dist: Any = _raw_dist
         _metadata: Any = _dist.metadata
         for _mod in (_dist.read_text("top_level.txt") or "").split():
-            dist_names.setdefault(_mod, []).append(_metadata["Name"])
+            dist_names.setdefault(str(_mod), []).append(_metadata["Name"])
 found: list[str] = []
 missing: list[str] = []
 for name in sorted(packages):

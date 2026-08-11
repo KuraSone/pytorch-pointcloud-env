@@ -30,14 +30,14 @@ uv sync --group cu128
 
 > **Note**: `cu128` is just one of the available dependency groups. Depending on your CUDA version and platform, you can choose:
 
-| Group | Description | Python |
-| --- | --- | --- |
-| `cpu` | CPU only (torch 2.8.0) | 3.12 |
-| `cu102` | CUDA 10.2 (torch 1.10.2) | 3.9 |
-| `cu102-linux` | CUDA 10.2 (torch 1.12.1, Linux only) | 3.10 |
-| `cu118` | CUDA 11.8 (torch 2.7.1) | 3.12 |
-| `cu126` | CUDA 12.6 (torch 2.8.0) | 3.12 |
-| `cu128` | CUDA 12.8 (torch 2.8.0) | 3.12 |
+| Group         | Description                          | Python |
+| ------------- | ------------------------------------ | ------ |
+| `cpu`         | CPU only (torch 2.8.0)               | 3.12   |
+| `cu102`       | CUDA 10.2 (torch 1.10.2)             | 3.9    |
+| `cu102-linux` | CUDA 10.2 (torch 1.12.1, Linux only) | 3.10   |
+| `cu118`       | CUDA 11.8 (torch 2.7.1)              | 3.12   |
+| `cu126`       | CUDA 12.6 (torch 2.8.0)              | 3.12   |
+| `cu128`       | CUDA 12.8 (torch 2.8.0)              | 3.12   |
 
 > The groups are mutually exclusive — pick exactly one.
 

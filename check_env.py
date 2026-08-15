@@ -18,9 +18,11 @@ if util.find_spec("torch") is not None:
 
     cuda_is_available: bool = torch.cuda.is_available()
     print(f"torch.cuda.is_available(): {cuda_is_available}")
-    print(
-        f"torch.cuda.get_device_capability(): {torch.cuda.get_device_capability() if cuda_is_available else 'N/A'}"
-    )
+    if cuda_is_available:
+        capability = str(torch.cuda.get_device_capability())
+    else:
+        capability = "N/A"
+    print(f"torch.cuda.get_device_capability(): {capability}")
 else:
     print("torch not found")
 print()

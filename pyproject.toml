@@ -59,8 +59,13 @@ cu128 = [
     "triton-windows==3.4.*; sys_platform == 'win32'",
 ]
 dev = [
+    "h5py-stubs; python_version >= '3.10'",
+    "ty",
     "mypy",
     "ruff",
+    "scipy-stubs; python_version >= '3.10'",
+    "scikit-learn-stubs",
+    "types-tqdm",
     "pip",
 ]
 
@@ -217,10 +222,7 @@ exclude = [".venv"]
 [[tool.mypy.overrides]]
 module = [
     "flash_attn",
-    "h5py",
-    "sklearn",
-    "sklearn.*",
-    "tqdm",
+#    "h5py",
 ]
 ignore_missing_imports = true
 
@@ -245,3 +247,6 @@ ignore = [
 #    "W191",  # 缩进包含制表符
 #    "B904",  # 对 HTTPException 允许不使用 from e 抛出异常
 ]
+
+#[tool.ty.terminal]
+#error-on-warning = true

@@ -12,6 +12,7 @@ dependencies = [
     "open3d", # 暂未考虑cuda加速
     "scikit-learn",
     "tensorboard",
+    "tensorboardx",
     "timm",
     "trimesh",
 ]
@@ -22,6 +23,7 @@ cpu = [
     "pyg-lib",
     "pytorch3d==0.7.9+d9839a9pt2.8.0cpu",
     "torch==2.8.0",
+    "torchvision==0.23.0",
     "torch-geometric==2.7.*",
     "triton-windows==3.4.*; sys_platform == 'win32'",
 ]
@@ -29,6 +31,7 @@ cu102 = [
     "numpy<2",
     "setuptools<81",
     "torch==1.10.2+cu102",
+    "torchvision==0.11.3+cu102",
     "torch-geometric==2.3.*",
 ]
 cu102-linux = [
@@ -36,6 +39,7 @@ cu102-linux = [
     "pyg-lib; sys_platform == 'linux'",
     "setuptools<81",
     "torch==1.12.1+cu102; sys_platform == 'linux'",
+    "torchvision==0.13.1+cu102; sys_platform == 'linux'",
     "torch-geometric==2.5.*",
 ]
 cu118 = [
@@ -44,6 +48,7 @@ cu118 = [
     "pyg-lib",
     "pytorch3d==0.7.9+d9839a9pt2.7.1cu118",
     "torch==2.7.1",
+    "torchvision==0.22.1",
     "torch-geometric==2.7.*",
     "triton-windows==3.3.*; sys_platform == 'win32'",
 ]
@@ -53,6 +58,7 @@ cu126 = [
     "pyg-lib",
     "pytorch3d==0.7.9+d9839a9pt2.8.0cu126",
     "torch==2.8.0",
+    "torchvision==0.23.0",
     "torch-geometric==2.7.*",
     "triton-windows==3.4.*; sys_platform == 'win32'",
 ]
@@ -62,6 +68,7 @@ cu128 = [
     "pyg-lib; sys_platform == 'linux'",
     "pytorch3d==0.7.9+d9839a9pt2.8.0cu128",
     "torch==2.8.0",
+    "torchvision==0.23.0",
     "torch-geometric==2.7.*",
     "triton-windows==3.4.*; sys_platform == 'win32'",
 ]
@@ -120,6 +127,14 @@ pyg-lib = [
     { index = "pyg-cu128", group = "cu128" },
 ]
 torch = [
+    { index = "pytorch-cpu", group = "cpu" },
+    { index = "pytorch-cu102", group = "cu102" },
+    { index = "pytorch-cu102", group = "cu102-linux" },
+    { index = "pytorch-cu118", group = "cu118" },
+    { index = "pytorch-cu126", group = "cu126" },
+    { index = "pytorch-cu128", group = "cu128" },
+]
+torchvision = [
     { index = "pytorch-cpu", group = "cpu" },
     { index = "pytorch-cu102", group = "cu102" },
     { index = "pytorch-cu102", group = "cu102-linux" },
@@ -230,6 +245,7 @@ exclude = [".venv"]
 module = [
     "flash_attn",
     "h5py",
+    "modelscope.*",
 ]
 ignore_missing_imports = true
 

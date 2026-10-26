@@ -22,12 +22,12 @@
 
   如果没有未推送的提交，就直接提交。
 
-  如果当前分支没有上游分支（`@{u}` 报错，例如分支还没推送过），就以远程主分支为基准合并：
+  如果当前分支没有上游分支（`@{u}` 报错，例如分支还没推送过），就以远程主分支为基准合并（`<remote>` 用 `git remote` 查，不一定是 `origin`）：
 
   ```bash
-  git fetch origin
-  git log origin/main..HEAD --oneline              # 查看未推送的提交
-  git reset --soft $(git merge-base HEAD origin/main)
+  git fetch <remote>
+  git log <remote>/main..HEAD --oneline              # 查看未推送的提交
+  git reset --soft $(git merge-base HEAD <remote>/main)
   git add <文件>
   git commit
   ```

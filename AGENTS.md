@@ -2,13 +2,23 @@
 
 ## 提交规范
 
-- 必须使用[约定式提交](https://www.conventionalcommits.org/zh-hans/)格式，并且**必须带 scope**：
+- 必须使用[约定式提交](https://www.conventionalcommits.org/zh-hans/)格式，**scope 和正文必填**，footer 可选：
 
   ```
-  <type>(<scope>): <描述>
+  <type>(<scope>): <description>
+
+  <body>
+
+  [optional footer(s)]
   ```
 
-  示例：`fix(deps): 将本地 wheels 索引设为 explicit`
+  示例：
+
+  ```
+  fix(deps): 将本地 wheels 索引设为 explicit
+
+  避免依赖解析时误用本地索引。
+  ```
 
 - 提交消息（标题和正文）必须使用中文；type 和 scope 用英文。
 - 每次提交时，必须把所有未推送的提交合并成一个提交：

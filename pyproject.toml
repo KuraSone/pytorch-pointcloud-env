@@ -21,7 +21,6 @@ dependencies = [
 
 [dependency-groups]
 dev = [
-    #    "h5py-stubs; python_version >= '3.10'", # 个人维护，已落后
     "mypy>=1.19.1",
     "pip>=26.0.1",
     "ruff>=0.17.2",
@@ -89,7 +88,10 @@ cu128 = [
     "torchvision==0.23.0",
     "triton-windows==3.4.*; sys_platform == 'win32'",
 ]
-
+cu132 = [
+    "torch>=2.15.0",
+    "torchvision>=0.29.2",
+]
 [tool.uv]
 environments = [
     "sys_platform == 'linux' and platform_machine == 'x86_64'",
@@ -105,6 +107,7 @@ conflicts = [
         { group = "cu118" },
         { group = "cu126" },
         { group = "cu128" },
+        { group = "cu132" },
     ],
 ]
 
@@ -116,6 +119,7 @@ cu102-linux = { requires-python = "==3.10.*" }
 cu118 = { requires-python = "==3.12.*" }
 cu126 = { requires-python = "==3.12.*" }
 cu128 = { requires-python = "==3.12.*" }
+cu132 = { requires-python = "==3.14.*" }
 
 [tool.uv.sources]
 kaolin = [
@@ -139,6 +143,7 @@ torch = [
     { index = "pytorch-cu118", group = "cu118" },
     { index = "pytorch-cu126", group = "cu126" },
     { index = "pytorch-cu128", group = "cu128" },
+    { index = "pytorch-cu132", group = "cu132" },
 ]
 torch-scatter = [
     { index = "pyg-cpu", group = "cpu" },
@@ -151,6 +156,7 @@ torchvision = [
     { index = "pytorch-cu118", group = "cu118" },
     { index = "pytorch-cu126", group = "cu126" },
     { index = "pytorch-cu128", group = "cu128" },
+    { index = "pytorch-cu132", group = "cu132" },
 ]
 
 [[tool.uv.index]]
@@ -246,6 +252,11 @@ explicit = true
 [[tool.uv.index]]
 name = "pytorch-cu128"
 url = "https://download.pytorch.org/whl/cu128"
+explicit = true
+
+[[tool.uv.index]]
+name = "pytorch-cu132"
+url = "https://download.pytorch.org/whl/cu132"
 explicit = true
 
 [tool.ruff]
